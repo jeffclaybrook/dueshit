@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
-import { authMiddleware, redirectToSignIn } from '@clerk/nextjs'
+import { authMiddleware, redirectToSignIn } from "@clerk/nextjs"
 
 export default authMiddleware({
- publicRoutes: ["/", "/api/webhook"],
+ publicRoutes: ["/"],
  afterAuth(auth, req) {
   if (auth.userId && auth.isPublicRoute) {
    let path = "/select-org"
@@ -34,5 +34,5 @@ export default authMiddleware({
 })
 
 export const config = {
- matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']
+ matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 }
